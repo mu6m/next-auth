@@ -5,7 +5,7 @@ import "@/app/globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "next store",
+	title: "next auth",
 };
 
 export default function RootLayout({
