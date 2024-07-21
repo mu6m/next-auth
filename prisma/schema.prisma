@@ -1,0 +1,27 @@
+generator client {
+  provider   = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider  = "postgresql"
+  directUrl = env("POSTGRES_URL")
+  url       = env("POSTGRES_URL_NON_POOLING")
+}
+
+enum user_type {
+  ADMIN
+  CUSTOMER
+}
+
+model user {
+  id       String @id @unique @default(cuid())
+  email    String @unique
+  username String @unique
+  password String
+
+  name String[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
