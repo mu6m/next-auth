@@ -2,8 +2,7 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
-import { login } from "./action";
-import { useParams } from "next/navigation";
+import { register } from "./action";
 
 const initialState = {
 	success: true,
@@ -91,7 +90,8 @@ function Alert({ state }: any) {
 	);
 }
 export default function Comp() {
-	const [state, formAction] = useActionState(login, initialState);
+	const [state, formAction] = useActionState(register, initialState);
+
 	return (
 		<section className="bg-gray-50">
 			<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -99,47 +99,32 @@ export default function Comp() {
 				<div className="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
 					<div className="p-6 space-y-4 md:space-y-6 sm:p-8">
 						<h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-							Login Admin
+							Sign up
 						</h1>
 						<form className="space-y-4 md:space-y-6" action={formAction}>
 							<div>
 								<label
-									htmlFor="user"
+									htmlFor="email"
 									className="block mb-2 text-sm font-medium text-gray-900"
 								>
-									Your email/username
+									Your email
 								</label>
 								<input
-									type="text"
-									name="user"
-									id="user"
+									type="email"
+									name="email"
+									id="email"
 									className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-									placeholder="..."
-								/>
-							</div>
-							<div>
-								<label
-									htmlFor="password"
-									className="block mb-2 text-sm font-medium text-gray-900"
-								>
-									Password
-								</label>
-								<input
-									type="password"
-									name="password"
-									id="password"
-									className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-									placeholder="..."
+									placeholder="name@company.com"
 								/>
 							</div>
 							<SubmitButton />
 							<p className="text-sm font-light text-gray-500">
-								don't have an account?{" "}
+								Already have an account?{" "}
 								<a
-									href="/auth/admin/create"
+									href="/auth/login"
 									className="font-medium text-primary-600 hover:underline"
 								>
-									Create
+									Sign in
 								</a>
 							</p>
 						</form>
